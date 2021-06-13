@@ -1,5 +1,7 @@
 package ex25;
 
+import java.util.Scanner;
+
 /*
  *  UCF COP3330 Summer 2021 Assignment 2 Solution
  *  Copyright 2021 Kieran Jimenez
@@ -30,7 +32,6 @@ Do not have the function return a string—you may need to support multiple lang
 As someone enters a password, determine its strength and display the result
 */
 
-import java.util.Scanner;
 
 public class App {
     static Scanner in = new Scanner(System.in);

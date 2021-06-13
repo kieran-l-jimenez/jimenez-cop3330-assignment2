@@ -1,0 +1,11 @@
+@startuml
+
+prompt -> input
+input -> addtototal
+addtototal -> 5thPrompt
+5thPrompt ->o prompt
+addtototal -> print
+
+
+
+@enduml

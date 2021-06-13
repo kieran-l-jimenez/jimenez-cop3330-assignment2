@@ -1,5 +1,7 @@
 package ex28;
 
+import java.util.Scanner;
+
 /*
  *  UCF COP3330 Summer 2021 Assignment 2 Solution
  *  Copyright 2021 Kieran Jimenez
@@ -29,4 +31,30 @@ Be sure you convert the input to a number before doing the comparison.
 In other words, if the number of numbers to add is 5, your program should still prompt only five times.
  */
 public class App {
+    static Scanner in = new Scanner(System.in);
+
+    public static void main(String[] args){
+        int Total;
+        App myApp = new App();
+
+        Total = myApp.retrieveSeveralNumbers(5);
+
+        System.out.println(myApp.totalString(Total));
+    }
+    String totalString(int total)
+    {
+        return String.format("The total is %d", total);
+    }
+    int retrieveSeveralNumbers(int numWanted)
+    {
+        int runningTotal = 0;
+
+        for(int i = 0; i < numWanted; i++)
+        {
+            System.out.print("Enter a number: ");
+            runningTotal += in.nextInt();
+        }
+
+        return runningTotal;
+    }
 }
