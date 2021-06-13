@@ -45,7 +45,7 @@ public class App {
 
     }
 
-    private int passwordValidator(String givenPassword)
+    int passwordValidator(String givenPassword)
     {
 
         boolean numberPresent = false, moreThanEightInLength = false , letterPresent = false , specialCharPresent = false;

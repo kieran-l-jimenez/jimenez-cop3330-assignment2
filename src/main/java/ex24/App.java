@@ -49,7 +49,7 @@ public class App {
         myApp.results(anagramFlag, words);
     }
 
-    private boolean isAnagram(String word_one, String word_two)
+    boolean isAnagram(String word_one, String word_two)
     {
         word_one =  word_one.toLowerCase();
         word_two = word_two.toLowerCase();

@@ -1,5 +1,8 @@
 package ex26;
 
+import java.util.Scanner;
+import java.lang.Math;
+
 /*
  *  UCF COP3330 Summer 2021 Assignment 2 Solution
  *  Copyright 2021 Kieran Jimenez
@@ -37,5 +40,41 @@ It will take you 70 months to pay off this card.
 -Rework the formula so the program can accept the number of months as an input and compute the monthly payment.
 -Create a version of the program that lets the user choose whether to figure out the number of months until payoff or the amount needed to pay per month.
  */
-public class App {
+public class PaymentCalculator {
+    static Scanner in = new Scanner(System.in);
+
+    public static void main(String[] args)
+    {
+        PaymentCalculator myPC = new PaymentCalculator();
+        UserInfo myUserInfo = myPC.grabInput();
+
+        System.out.printf("It will take you %.0f months to pay off this card.", myPC.calculateMonthsUntilPaidOff(myUserInfo));
+    }
+
+    private UserInfo grabInput()
+    {
+        UserInfo myUser = new UserInfo();
+        System.out.print("What is your balance? ");
+        myUser.Balance = in.nextDouble();
+        System.out.print("What is the APR on the card (as a percent)? ");
+        myUser.APR = in.nextDouble();
+        System.out.print("What is the monthly payment you can make? ");
+        myUser.monthlyPayment = in.nextDouble();
+        return myUser;
+    }
+
+    public double calculateMonthsUntilPaidOff(UserInfo myUserInfo)
+    {
+        double balancePerMonthlyPayment = myUserInfo.Balance / myUserInfo.monthlyPayment;
+        if((balancePerMonthlyPayment * 100)%1 > 0)
+            balancePerMonthlyPayment = balancePerMonthlyPayment - ((balancePerMonthlyPayment * 100)%1) + 0.01;
+        double APRdecimal = myUserInfo.APR / 100;
+        double dailyRate = APRdecimal / 365;
+        double result = ((-1/30.0) * Math.log(1 + balancePerMonthlyPayment * (1 - Math.pow(1 + dailyRate, 30)))) / Math.log(1 + dailyRate);
+
+        if(result%1 > 0)//round up months
+            result = result - (result%1) + 1;
+
+        return result;
+    }
 }
