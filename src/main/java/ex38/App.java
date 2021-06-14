@@ -2,6 +2,8 @@ package ex38;
 
 import java.util.Scanner;
 
+import static java.lang.Integer.parseInt;
+
 /*
  *  UCF COP3330 Summer 2021 Assignment 2 Solution
  *  Copyright 2021 Kieran Jimenez
@@ -32,14 +34,27 @@ public class App {
         App myApp = new App();
 
         String firstLine;
-        int size;
-        int[] fLineInts;
         System.out.print("Enter a list of numbers, separated by spaces: ");
         firstLine = in.nextLine();
-        char[] fLineArr = firstLine.toCharArray();
-        size = firstLine.length();
+        String[] fLineArr = firstLine.split(" ");
+        int size = fLineArr.length;
+        int[] fLineInts = new int[size];
+
         for(int i = 0; i < size; i++)
         {
+            fLineInts[i] = parseInt(fLineArr[i]);
+        }
+        int[] filtered = myApp.filterEvenNumbers(fLineInts, size);
+
+        System.out.print("The even numbers are ");
+        for(int i = 0; i < filtered.length; i++)
+        {
+            if(i == filtered.length-1 || filtered[i+1] == 0)
+            {
+                System.out.printf("%d.", filtered[i]);
+                break;
+            }
+            System.out.printf("%d ", filtered[i]);
         }
     }
     int[] filterEvenNumbers(int[] arr, int size)
