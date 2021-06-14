@@ -1,5 +1,7 @@
 package ex30;
 
+import java.util.Scanner;
+
 /*
  *  UCF COP3330 Summer 2021 Assignment 2 Solution
  *  Copyright 2021 Kieran Jimenez
@@ -31,4 +33,24 @@ Create a program that generates a multiplication table for the numbers 1 through
 -Create a graphical program. Use a drop-down list to change the base number. Generate or update the table when the number is selected.
  */
 public class App {
+    static Scanner in = new Scanner(System.in);
+
+    public static void main(String[] args){
+        App myApp = new App();
+
+        System.out.print(myApp.tableGenerator(12, 12));
+    }
+    String tableGenerator(int dimensionX, int dimensionY)
+    {
+        String table = "";
+        for(int i = 1; i <= dimensionX; i++)
+        {
+            for(int j = 1; j <= dimensionY; j++)
+            {
+                table = table.concat(String.format("%5d", i*j));
+            }
+            table = table.concat("\n");
+        }
+        return table;
+    }
 }

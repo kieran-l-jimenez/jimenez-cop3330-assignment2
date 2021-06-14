@@ -17,4 +17,28 @@ class PaymentCalculatorTest {
 
         assertEquals(70, answer);
     }
+    @Test
+    public void calculateMonthsUntilPaidOff_30(){
+        PaymentCalculator myPC = new PaymentCalculator();
+        UserInfo myUser = new UserInfo();
+        myUser.APR = 18;
+        myUser.Balance = 3000;
+        myUser.monthlyPayment = 125;
+
+        double answer = myPC.calculateMonthsUntilPaidOff(myUser);
+
+        assertEquals(30, answer);
+    }
+    @Test
+    public void calculateMonthsUntilPaidOff_28(){
+        PaymentCalculator myPC = new PaymentCalculator();
+        UserInfo myUser = new UserInfo();
+        myUser.APR = 21;
+        myUser.Balance = 4000;
+        myUser.monthlyPayment = 180;
+
+        double answer = myPC.calculateMonthsUntilPaidOff(myUser);
+
+        assertEquals(28, answer);
+    }
 }
